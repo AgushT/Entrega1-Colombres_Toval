@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Appjugadores'
+    'Appjugadores',
 ]
 
 MIDDLEWARE = [
@@ -55,10 +55,8 @@ ROOT_URLCONF = 'ProyectoDepor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['C:/Users/lenovo/Desktop/ProyectoDepor/Appjugadores/plantilla/'],
         'APP_DIRS': True,
-        'DIRS': [
-            BASE_DIR / "plantilla"
-            ],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

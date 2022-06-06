@@ -1,14 +1,10 @@
 
 from django.contrib import admin
-from django.urls import path
-from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores
-#from . import views
+from django.urls import path, include
+from django.conf import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Inicio', inicio),
-    path('jugadores', jugadores),
-    path('estadisticas', estadisticas),
-    path('antecedentes', antecedentes),
+    path('Appjugadores/', include('Appjugadores.urls')),
 ]

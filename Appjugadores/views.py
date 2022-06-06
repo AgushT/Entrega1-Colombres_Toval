@@ -5,14 +5,14 @@ from Appjugadores.models import jugadores, estadisticas, antecedentes
 
 
 def inicio(self):
-    plantilla= loader.get_template('Appjugadores/inicio.html')
+    plantilla=loader.get_template ('Appjugadores/inicio.html')
     documento= plantilla.render()
     return HttpResponse(documento)
+    
 
 
 def jugadores(request):
-    #documento= "Pagina de cursos"
-    return render(request, 'Appjugadodes/jugadores.html')
+    return render(request, 'Appjugadores/jugadores.html')
 
 
 def estadisticas(request):
