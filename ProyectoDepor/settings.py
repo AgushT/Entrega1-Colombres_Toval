@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Appjugadores'
 ]
 
 MIDDLEWARE = [
@@ -54,8 +55,10 @@ ROOT_URLCONF = 'ProyectoDepor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
         'APP_DIRS': True,
+        'DIRS': [
+            BASE_DIR / "plantilla"
+            ],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
