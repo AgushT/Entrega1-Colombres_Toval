@@ -27,21 +27,21 @@ def antecedentes(request):
 
 def jugadoresFormulario(request):
      
-     if request.method== 'POST':
-          miFormulario= jugadoresFormulario(request.POST)
-          if miFormulario.is_valid():
-               informacion= miFormulario.cleaned_data
-          nombre_completo= informacion ['Nombre Completo']
-          fechadenacimiento= informacion ['Fecha de Nacimiento']
-          altura= informacion [ 'Altura']
-          nacionalidad= informacion ['Nacionalidad']
-          jugador= Jugadores(nombre_completo= Nombre Completo , fechadenacimiento= Fecha de Naciomiento, altura= Altura, nacionalidad= Nacionalidad  )
-          jugador.save()
-          return render (request, 'Appjugadores/inicio.html')
-     else:
-          miFormulario= jugadoresFormulario()
+    if request.method== 'POST':
+        miFormulario= jugadoresFormulario(request.POST)
+        if miFormulario.is_valid():
+            informacion= miFormulario.cleaned_data
+        nombre_completo= informacion ['Nombre Completo']
+        fechadenacimiento= informacion ['Fecha de Nacimiento']
+        altura= informacion ['Altura']
+        nacionalidad= informacion ['Nacionalidad']
+        jugador= Jugadores(nombre_completo= nombre_completo, fechadenacimiento= fechadenacimiento, altura= altura, nacionalidad= nacionalidad  )
+        jugador.save()
+        return render (request, 'Appjugadores/inicio.html')
+    else:
+         miFormulario= jugadoresFormulario()
 
-     return render (request, 'Appjugadores/jugadoresFormulario.html', {'miFormulario': miFormulario})
+    return render (request, 'Appjugadores/profesoresFormulario.html', {'miFormulario': miFormulario})
 
 
 

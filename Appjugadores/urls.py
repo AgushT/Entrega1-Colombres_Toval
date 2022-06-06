@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores
+from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario
 #from . import views
 
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('jugadores', jugadores),
     path('estadisticas', estadisticas),
     path('antecedentes', antecedentes),
+    path('jugadoresFormulario', jugadoresFormulario),
 ]
