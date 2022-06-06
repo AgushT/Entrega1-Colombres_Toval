@@ -1,6 +1,6 @@
 from django.db import models
 
-class jugadores(models.Model):
+class Jugadores(models.Model):
     nombre_completo = models.CharField(max_length= 50)
     fechadenacimiento= models.DateField() 
     peso=  models.IntegerField()
@@ -8,13 +8,13 @@ class jugadores(models.Model):
     nacionalidad= models.CharField(max_length=30)
 
 
-class estadisticas(models.Model): 
+class Estadisticas(models.Model): 
     goles=  models.IntegerField()
     velocidad= models.IntegerField()
     posicion= models.CharField(max_length=30)
     precisiondepase= models.IntegerField()
 
-class antecedentes(models.Model):
+class Antecedentes(models.Model):
     año_de_debut= models.DateField() 
     club_debutante= models.CharField(max_length=30)
     club_actual= models.CharField(max_length=30)
