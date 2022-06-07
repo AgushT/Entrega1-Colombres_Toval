@@ -77,14 +77,12 @@ def busquedanombre(request):
      return render(request, 'Appjugadores/busquedanombre.html')
 
 def buscar(request):
-     if request.GET['jugador']:
-          nombre_completo= request.GET['nombre_completo']
-          fechadenacimiento= request.GET['fechadenacimiento']
-          peso= request.GET['peso']
-          altura= request.GET['altura']
-          nacionalidad= request.GET['nacionalidad']
-          Jugador= Jugadores.objects.filter(nombre_completo=nombre_completo)
-          return render (request,'Appjugadores/resultadoBusqueda.html', {'nombre_completo':nombre_completo, 'fechadenacimiento': fechadenacimiento, 'peso': peso, 'altura': altura, 'nacionalidad': nacionalidad})
+     if request.GET['nombre']:
+        
+          nombrejugador= request.GET['nombre']
+          Jugador= Jugadores.objects.filter(nombre_completo=nombrejugador)
+        
+          return render (request,'Appjugadores/resultadoBusqueda.html', {'jugador': Jugador[0]})
      else:
           respuesta= "No se ha ingresado el nombre de ningun jugador"
      return HttpResponse(respuesta)

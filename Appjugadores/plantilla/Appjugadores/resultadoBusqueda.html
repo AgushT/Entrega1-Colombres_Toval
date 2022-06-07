@@ -1,20 +1,17 @@
 {% extends "Appjugadores/inicio.html" %}
 {% load static %}
-{% block section_name %}
-<h3>Resultado de su Busqueda</h3>
-{% endblock %}
 {% block contenidoQueCambia %}
-<h1>Estamos buscando a su jugador {{}}</h1>
-{% if jugadores %}
+<h3>Resultado de su Busqueda</h3>
+{% if jugador %}
 <ul>
-    {% for jugador in jugadores %}
+    
     <li> {{jugador.nombre_completo}}</li>
     <li> {{jugador.fechadenacimiento}}</li>
     <li> {{jugador.peso}}</li>
     <li> {{jugador.altura}}</li>
     <li> {{jugador.nacionalidad}}</li>
     <br>
-    {% endfor %}
+
 </ul>
 
 
