@@ -1,0 +1,12 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Buscador de jugadores</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<form action="{% url 'buscar' %}" method="GET"> {% csrf_token%}
+    <hi> Ingrese el nombre del jugador</hi>
+    <input type="text" name="nombre" placeholder="NOMBRE" id="nombre">
+    <input type="submit" value="Buscar">
+</form> 
+{% endblock %}

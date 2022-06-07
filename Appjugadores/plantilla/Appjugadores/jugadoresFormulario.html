@@ -1,11 +1,9 @@
 {% extends "Appjugadores/inicio.html" %}
 {% load static %}
-{% block section_name %}
-<h3>Formulario para jugadores</h3>
-{% endblock %}
 {% block contenidoQueCambia %}
-<form action="{% url 'jugadoresFormulario' %}" method="POST"> {% csrf_token%}
-    <hi> Ingrese los datos del Jugador</hi>
+<h3>Formulario para jugadores</h3>
+<form action="{% url 'JugadoresFormulario' %}" method="POST"> {% csrf_token%}
+    <h1> Ingrese los datos del Jugador</h1>
     <table>
         {{miFormulario.as_table}}
     </table>

@@ -30,16 +30,19 @@ def jugadoresFormulario(request):
         miFormulario= JugadoresFormulario(request.POST)
         if miFormulario.is_valid():
             informacion= miFormulario.cleaned_data
-        nombre= informacion ['nombre_completo']
+        nombre_completo= informacion ['nombre_completo']
         fechadenacimiento= informacion ['fechadenacimiento']
         altura= informacion ['altura']
         nacionalidad= informacion ['nacionalidad']
-        jugador= Jugadores(nombre_completo= nombre, fechadenacimiento= fechadenacimiento, altura= altura, nacionalidad= nacionalidad)
+        jugador= Jugadores(nombre_completo= nombre_completo, fechadenacimiento= fechadenacimiento, altura= altura, nacionalidad= nacionalidad)
         jugador.save()
         return render (request, 'Appjugadores/inicio.html')
     else:
          miFormulario= JugadoresFormulario()
     return render (request, 'Appjugadores/jugadoresFormulario.html', {'miFormulario': miFormulario})
+
+
+
 
 
 
