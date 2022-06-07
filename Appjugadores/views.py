@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from Appjugadores.models import Jugadores, Estadisticas, Antecedentes
-from Appjugadores.forms import jugadoresFormulario, antecedentesFormulario, estadisticasFormulario
+from Appjugadores.forms import JugadoresFormulario, AntecedentesFormulario, EstadisticasFormulario
 
 
 def inicio(self):
@@ -25,23 +25,27 @@ def antecedentes(request):
      return render(request, 'Appjugadores/antecedentes.html')
 
 
-def jugadoresFormulario(request):
-     
+def jugadoresFormulario(request):    
     if request.method== 'POST':
-        miFormulario= jugadoresFormulario(request.POST)
+        miFormulario= JugadoresFormulario(request.POST)
         if miFormulario.is_valid():
             informacion= miFormulario.cleaned_data
-        nombre_completo= informacion ['Nombre Completo']
-        fechadenacimiento= informacion ['Fecha de Nacimiento']
-        altura= informacion ['Altura']
-        nacionalidad= informacion ['Nacionalidad']
-        jugador= Jugadores(nombre_completo= nombre_completo, fechadenacimiento= fechadenacimiento, altura= altura, nacionalidad= nacionalidad  )
+        nombre= informacion ['nombre_completo']
+        fechadenacimiento= informacion ['fechadenacimiento']
+        altura= informacion ['altura']
+        nacionalidad= informacion ['nacionalidad']
+        jugador= Jugadores(nombre_completo= nombre, fechadenacimiento= fechadenacimiento, altura= altura, nacionalidad= nacionalidad)
         jugador.save()
         return render (request, 'Appjugadores/inicio.html')
     else:
-         miFormulario= jugadoresFormulario()
+         miFormulario= JugadoresFormulario()
+    return render (request, 'Appjugadores/jugadoresFormulario.html', {'miFormulario': miFormulario})
 
-    return render (request, 'Appjugadores/profesoresFormulario.html', {'miFormulario': miFormulario})
+
+
+
+
+
 
 
 

@@ -7,8 +7,8 @@ from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, ju
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio', inicio),
-    path('jugadores', jugadores),
-    path('estadisticas', estadisticas),
-    path('antecedentes', antecedentes),
-    path('jugadoresFormulario', jugadoresFormulario),
+    path('jugadores', jugadores, name= 'Jugadores'),
+    path('estadisticas', estadisticas, name= 'Estadisticas'),
+    path('antecedentes', antecedentes, name= 'Antecedentes'),
+    path('jugadoresFormulario', jugadoresFormulario, name= 'JugadoresFormulario'),
 ]

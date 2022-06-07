@@ -1,7 +1,7 @@
 from django import forms
 
 
-class jugadoresFormulario (forms.Form):
+class JugadoresFormulario (forms.Form):
     nombre_completo = forms.CharField(max_length= 50)
     fechadenacimiento= forms.DateField() 
     peso=  forms.IntegerField()
@@ -9,13 +9,13 @@ class jugadoresFormulario (forms.Form):
     nacionalidad= forms.CharField(max_length=30)
 
 
-class estadisticasFormulario(forms.Form): 
+class EstadisticasFormulario(forms.Form): 
     goles=  forms.IntegerField()
     velocidad= forms.IntegerField()
     posicion= forms.CharField(max_length=30)
     precisiondepase= forms.IntegerField()
 
-class antecedentesFormulario(forms.Form):
+class AntecedentesFormulario(forms.Form):
     año_de_debut= forms.DateField() 
     club_debutante= forms.CharField(max_length=30)
     club_actual= forms.CharField(max_length=30)
