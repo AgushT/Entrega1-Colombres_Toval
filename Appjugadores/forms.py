@@ -2,7 +2,7 @@ from django import forms
 
 
 class JugadoresFormulario (forms.Form):
-    nombre_completo = forms.CharField(max_length= 50)
+    nombre_completo= forms.CharField(max_length= 50)
     fechadenacimiento= forms.DateField() 
     peso=  forms.IntegerField()
     altura= forms.IntegerField()
