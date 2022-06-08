@@ -3,8 +3,9 @@
 #### Bienvenidos a Appjugadores
 
 ### Links
-[Inicio](http://127.0.0.1:8000/Appjugadores/inicio)
-[Busqueda nombre](http://127.0.0.1:8000/Appjugadores/busquedanombre)
+_[Inicio](http://127.0.0.1:8000/Appjugadores/inicio)_
+
+_[Busqueda nombre](http://127.0.0.1:8000/Appjugadores/busquedanombre)_
 
 
 # **CONTENIDO**
