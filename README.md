@@ -2,6 +2,10 @@
 #### Integrantes: Agustin Colombres, Agustin Toval
 #### Bienvenidos a Appjugadores
 
+### Links
+[Inicio](http://127.0.0.1:8000/Appjugadores/inicio)
+[Busqueda nombre](http://127.0.0.1:8000/Appjugadores/busquedanombre)
+
 
 # **CONTENIDO**
 # *[ProjectDepor]*
