@@ -1,1 +1,2 @@
-# Entrega1-Colombres_Toval
+# Entrega intermedia CoderHouse
+Integrantes: Agustin Colombres, Agustin Toval
