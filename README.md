@@ -3,12 +3,12 @@
 #### Bienvenidos a Appjugadores
 
 
-**CONTENIDO**
-[ProjectDepor]
+# **CONTENIDO**
+# *[ProjectDepor]
 
 # Content [ProjectDepor](ProyectoDepor/)
 
-[Appjugadores]
+# *[Appjugadores]
 
 # Models [Modelos](Appjugadores/models.py)
 # Forms [Formularios](Appjugadores/forms.py)
