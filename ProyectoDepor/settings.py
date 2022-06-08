@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoDepor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/lenovo/Desktop/ProyectoDepor/Appjugadores/plantilla/'],
+        'DIRS': [BASE_DIR / 'Appjugadores/plantilla'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
