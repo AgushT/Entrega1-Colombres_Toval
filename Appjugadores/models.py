@@ -7,6 +7,9 @@ class Jugadores(models.Model):
     altura= models.IntegerField()
     nacionalidad= models.CharField(max_length=30)
 
+def __str__(self) -> str: 
+    return self.nombre_completo
+
 
 class Estadisticas(models.Model): 
     goles=  models.IntegerField()

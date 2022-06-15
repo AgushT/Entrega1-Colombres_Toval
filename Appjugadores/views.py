@@ -87,6 +87,11 @@ def buscar(request):
           respuesta= "No se ha ingresado el nombre de ningun jugador"
      return HttpResponse(respuesta)
 
+def leerjugadores(request):
+  jugadores = Jugadores.objects.all() 
+  contexto = {'jugadores': jugadores}
+  return render(request, 'AppCoder/jugadores.html', contexto)
+
 
 
 

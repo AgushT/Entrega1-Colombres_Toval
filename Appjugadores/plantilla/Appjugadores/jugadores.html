@@ -4,5 +4,9 @@
 <h3>Jugadores</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<h3>Pagina de jugadores</h3>
+<h1>Estos son  Nuestros Jugadores</h1>
+<h3>Lista de jugadores</h3>
+{%for jugador in jugadores%}
+<li>{{ Jugadores }}</li>
+{% endfor %}
 {% endblock %}
