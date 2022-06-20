@@ -1,0 +1,14 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Estadisticas</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h1>Estos son las Estadisticas de Nuestros Jugadores</h1>
+<h3> Edicion de estadisticas</h3>
+<form action="{% url 'editarestadistica' goles %}" method="POST">{% csrf_token %}
+    <table>
+        {{miFormulario.as_table}}
+    </table>
+<input type="submit" value="Editar estadistica"
+{% endblock %}

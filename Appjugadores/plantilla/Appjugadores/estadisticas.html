@@ -4,5 +4,13 @@
 <h3>Estadisticas</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<h3>Pagina de estadisticas</h3>
+<h1>Estos son las Estadisticas de  Nuestros Jugadores</h1>
+<h3>Lista de jugadores</h3>
+{% for estadistica in estadisticas %}
+<li>{{ estadistica }}</li>
+<button>
+    <a href= "{% url 'eliminarestadistica' estadistica.goles %}">Eliminar</a>
+    <a href= "{% url 'editarestadistica' estadistica.goles %}">Editar</a>
+</button>
+{% endfor %}
 {% endblock %}

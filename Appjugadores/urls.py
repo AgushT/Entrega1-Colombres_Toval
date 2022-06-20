@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario, estadisticasFormulario, antecedentesFormulario, busquedanombre, buscar, leerjugadores, eliminarjugador, editarJugador, leerEstadisticas
+from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario, estadisticasFormulario, antecedentesFormulario, busquedanombre, buscar, leerjugadores, eliminarjugador, editarJugador, leerEstadisticas, eliminarestadistica, editarEstadistica
 
 
 urlpatterns = [
@@ -17,4 +17,7 @@ urlpatterns = [
     path('buscar', buscar, name= 'buscar'),
     path('eliminarjugador/<nombre_completo>', eliminarjugador, name= 'eliminarjugador'),
     path('editarjugador/<nombre_completo>', editarJugador, name= 'editarjugador'),
+    path('eliminarestadistica/<goles>', eliminarestadistica, name= 'eliminarestadistica'),
+    path('editarestadistica/<goles>', editarEstadistica, name= 'editarestadistica'),
+
 ]

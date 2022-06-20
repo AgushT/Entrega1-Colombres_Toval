@@ -46,13 +46,14 @@ def jugadoresFormulario(request):
 def estadisticasFormulario(request):    
     if request.method== 'POST':
         miFormulario= EstadisticasFormulario(request.POST)
+        print(miFormulario)
         if miFormulario.is_valid:
             informacion= miFormulario.cleaned_data
         #goles= informacion ['goles']  
         #velocidad= informacion ['velocidad']
         #posicion= informacion ['posicion']
         #precisiondepase= informacion ['precisiondepase']
-            estadistica= Estadisticas(goles= informacion['goles'], velocidad=['velocidad'], posicion= informacion['posicion'], precisiondepase= informacion['precisiondepase'])
+            estadistica= Estadisticas(goles= informacion['goles'], velocidad=informacion['velocidad'], posicion= informacion['posicion'], precisiondepase= informacion['precisiondepase'])
             estadistica.save()
             return render (request, 'Appjugadores/inicio.html')
     else:
@@ -127,6 +128,35 @@ def leerEstadisticas(request):
   estadisticas= Estadisticas.objects.all() 
   contexto = {'estadisticas': estadisticas}
   return render(request, 'Appjugadores/estadisticas.html', contexto)
+
+@login_required
+def eliminarestadistica(request, goles ):
+     estadistica= Estadisticas.objects.get(goles= goles )
+     estadistica.delete()
+     estadisticas= Estadisticas.objects.all()
+     contexto= {'estadisticas': estadisticas}
+     return render(request, "Appjugadores/estadisticas.html", contexto)
+
+def editarEstadistica(request, goles):  
+    estadistica= Estadisticas.objects.get(goles= goles )
+
+    if request.method== 'POST':
+        miFormulario= EstadisticasFormulario(request.POST)
+        print(miFormulario)
+        if miFormulario.is_valid:
+            informacion= miFormulario.cleaned_data
+        estadistica.goles= informacion ['goles']  
+        estadistica.velocidad= informacion ['velocidad']
+        estadistica.posicion= informacion ['posicion']
+        estadistica.precisiondepase= informacion ['precisiondepase']
+        estadistica.save()
+        estadisticas= Estadisticas.objects.all()
+        contexto= {'estadisticas': estadisticas}
+        return render (request, 'Appjugadores/inicio.html', contexto)
+    else:
+         miFormulario= EstadisticasFormulario(initial={'goles':estadistica.goles, 'velocidad':estadistica.velocidad,'posicion': estadistica.posicion,'precisiondepase': estadistica.precisiondepase})
+         contexto= {'miFormulario': miFormulario, 'goles': goles}
+    return render (request, 'Appjugadores/editarEstadistica.html', contexto)
 
 
 
