@@ -6,7 +6,11 @@
 {% block contenidoQueCambia %}
 <h1>Estos son  Nuestros Jugadores</h1>
 <h3>Lista de jugadores</h3>
-{%for jugador in jugadores%}
-<li>{{ Jugadores }}</li>
+{% for jugador in jugadores %}
+<li>{{ jugador }}</li>
+<button>
+    <a href= "{% url 'eliminarjugador' jugador.nombre_completo %}">Eliminar</a>
+    <a href= "{% url 'editarjugador' jugador.nombre_completo %}">Editar</a>
+</button>
 {% endfor %}
 {% endblock %}

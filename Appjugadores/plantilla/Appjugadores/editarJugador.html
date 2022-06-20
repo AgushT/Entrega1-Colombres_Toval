@@ -1,0 +1,14 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Jugadores</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h1>Estos son  Nuestros Jugadores</h1>
+<h3> Edicion de jugadores</h3>
+<form action="{% url 'editarjugador' nombre_completo %}" method="POST">{% csrf_token %}
+    <table>
+        {{miFormulario.as_table}}
+    </table>
+<input type="submit" value="Editar jugador"
+{% endblock %}

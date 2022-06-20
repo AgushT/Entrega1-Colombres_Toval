@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from Appjugadores.models import Jugadores, Estadisticas, Antecedentes
 from Appjugadores.forms import JugadoresFormulario, AntecedentesFormulario, EstadisticasFormulario
+from django.contrib.auth.decorators import login_required
 
 
 def inicio(self):
@@ -90,7 +91,42 @@ def buscar(request):
 def leerjugadores(request):
   jugadores = Jugadores.objects.all() 
   contexto = {'jugadores': jugadores}
-  return render(request, 'AppCoder/jugadores.html', contexto)
+  return render(request, 'Appjugadores/jugadores.html', contexto)
+
+@login_required
+def eliminarjugador(request, nombre_completo ):
+     jugador= Jugadores.objects.get(nombre_completo= nombre_completo )
+     jugador.delete()
+     jugadores= Jugadores.objects.all()
+     contexto= {'jugadores': jugadores}
+     return render(request, "Appjugadores/jugadores.html", contexto)
+
+def editarJugador(request, nombre_completo):  
+    jugador= Jugadores.objects.get(nombre_completo= nombre_completo )
+
+    if request.method== 'POST':
+        miFormulario= JugadoresFormulario(request.POST)
+        print(miFormulario)
+        if miFormulario.is_valid:
+            informacion= miFormulario.cleaned_data
+            jugador.nombre_completo= informacion ['nombre_completo']
+            jugador.fechadenacimiento= informacion ['fechadenacimiento']
+            jugador.altura= informacion ['altura']
+            jugador.nacionalidad= informacion ['nacionalidad']
+            #jugador= Jugadores(nombre_completo= informacion['nombre_completo'], fechadenacimiento= informacion['fechadenacimiento'], peso= informacion['peso'], altura=informacion['altura'], nacionalidad= informacion['nacionalidad'])
+            jugador.save()
+            jugadores= Jugadores.objects.all()
+            contexto= {'jugadores': jugadores}
+            return render (request, 'Appjugadores/inicio.html', contexto)
+    else:
+         miFormulario= JugadoresFormulario(initial={'nombre':jugador.nombre_completo, 'fecha de nacimiento':jugador.fechadenacimiento,'peso': jugador.peso,'altura': jugador.altura, 'nacionalidad': jugador.nacionalidad})
+         contexto= {'miFormulario': miFormulario, 'nombre_completo': nombre_completo}
+    return render (request, 'Appjugadores/editarJugador.html', contexto)
+
+def leerEstadisticas(request):
+  estadisticas= Estadisticas.objects.all() 
+  contexto = {'estadisticas': estadisticas}
+  return render(request, 'Appjugadores/estadisticas.html', contexto)
 
 
 
