@@ -1,0 +1,14 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Antecedentes</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h1>Estos son los Antecedentes de Nuestros Jugadores</h1>
+<h3> Edicion de antecedentes</h3>
+<form action="{% url 'editarantecedente' año_de_debut %}" method="POST">{% csrf_token %}
+    <table>
+        {{miFormulario.as_table}}
+    </table>
+<input type="submit" value="Editar antecedente"
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Antecedentes</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h1>Antecedentes de  Nuestros Jugadores</h1>
+<h3>Lista de antecedentes</h3>
+<form method="POST">{% csrf_token %}
+Estas seguro de Eliminar los antecedentes del Jugador "{{object}}"
+<input type="submit" value="SI/>"
+{% endblock %}

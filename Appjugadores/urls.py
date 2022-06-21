@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario, estadisticasFormulario, antecedentesFormulario, busquedanombre, buscar, leerjugadores, eliminarjugador, editarJugador, leerEstadisticas, eliminarestadistica, editarEstadistica
+from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario, estadisticasFormulario, antecedentesFormulario, busquedanombre, buscar, leerjugadores, eliminarjugador, editarJugador, leerEstadisticas, eliminarestadistica, editarEstadistica, leerAntecedentes, eliminarantecedente, editarAntecedente
 
 
 urlpatterns = [
@@ -9,7 +9,7 @@ urlpatterns = [
     #path('jugadores', jugadores, name= 'Jugadores'),
     path('jugadores', leerjugadores, name= 'Jugadores'),
     path('estadisticas', leerEstadisticas, name= 'Estadisticas'),
-    path('antecedentes', antecedentes, name= 'Antecedentes'),
+    path('antecedentes', leerAntecedentes, name= 'Antecedentes'),
     path('jugadoresFormulario', jugadoresFormulario, name= 'JugadoresFormulario'),
     path('estadisticasFormulario', estadisticasFormulario, name= 'EstadisticasFormulario'),
     path('antecedentesFormulario', antecedentesFormulario, name= 'AntecedentesFormulario'),
@@ -19,5 +19,6 @@ urlpatterns = [
     path('editarjugador/<nombre_completo>', editarJugador, name= 'editarjugador'),
     path('eliminarestadistica/<goles>', eliminarestadistica, name= 'eliminarestadistica'),
     path('editarestadistica/<goles>', editarEstadistica, name= 'editarestadistica'),
-
+    path('eliminarantecedente/<año_de_debut>', eliminarantecedente, name= 'eliminarantecedente'),
+    path('editarantecedente/<año_de_debut>', editarAntecedente, name= 'editarantecedente'),
 ]
