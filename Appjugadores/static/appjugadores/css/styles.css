@@ -226,6 +226,10 @@ ul ol {
   text-shadow: 3px 3px #ebebeb;
 }
 
+.changing-container {
+  padding: 30px;
+}
+
 dt {
   font-weight: 700;
 }
@@ -12380,6 +12384,10 @@ p {
   }
 }
 
+#meet-players {
+  margin: 0 20px;
+}
+
 header.masthead {
   padding-top: 10.5rem;
   padding-bottom: 6rem;
@@ -12403,7 +12411,7 @@ header.masthead .masthead-subheading {
 
 header.masthead .masthead-heading {
   color: black;
-  font-size: 3.25rem;
+  font-size: 2.25rem;
   font-weight: 700;
   line-height: 3.25rem;
   margin-bottom: 2rem;
