@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario, estadisticasFormulario, antecedentesFormulario, busquedanombre, buscar, leerjugadores, eliminarjugador, editarJugador, leerEstadisticas, eliminarestadistica, editarEstadistica, leerAntecedentes, eliminarantecedente, editarAntecedente
+from Appjugadores.views import antecedentes, estadisticas, inicio, jugadores, jugadoresFormulario, estadisticasFormulario, antecedentesFormulario, busquedanombre, buscar, leerjugadores, eliminarjugador, editarJugador, leerEstadisticas, eliminarestadistica, editarEstadistica, leerAntecedentes, eliminarantecedente, editarAntecedente, login_request, register_request, editarPerfil
+from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
@@ -21,4 +22,8 @@ urlpatterns = [
     path('editarestadistica/<goles>', editarEstadistica, name= 'editarestadistica'),
     path('eliminarantecedente/<año_de_debut>', eliminarantecedente, name= 'eliminarantecedente'),
     path('editarantecedente/<año_de_debut>', editarAntecedente, name= 'editarantecedente'),
+    path('login', login_request, name= 'login'),
+    path('register', register_request, name= 'registro'),
+    path('logout', LogoutView.as_view(template_name='Appjugadores/logout.html'), name= 'Logout'),
+    path('editarPerfil', editarPerfil, name= 'editarPerfil'),
 ]

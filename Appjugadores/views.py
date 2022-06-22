@@ -2,8 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from Appjugadores.models import Jugadores, Estadisticas, Antecedentes
-from Appjugadores.forms import JugadoresFormulario, AntecedentesFormulario, EstadisticasFormulario
+from Appjugadores.forms import JugadoresFormulario, AntecedentesFormulario, EstadisticasFormulario, UserRegisterForm, UserEditForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+
 
 
 def inicio(self):
@@ -190,6 +194,63 @@ def editarAntecedente(request, año_de_debut):
          miFormulario= AntecedentesFormulario(initial={'año_de_debut':antecedente.año_de_debut, 'club_debutante': antecedente.club_debutante,'club_actual': antecedente.club_actual})
          contexto= {'miFormulario': miFormulario, 'año_de_debut': año_de_debut}
     return render (request, 'Appjugadores/editarAntecedentes.html', contexto)
+
+def login_request(request):
+    if request.method=='POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            usuario= form.cleaned_data.get('username')
+            clave= form.cleaned_data.get('password')
+               
+            user= authenticate(username=usuario, password= clave)
+            if user  is not None:
+                login(request, user)  
+                return render (request, 'Appjugadores/inicio.html', {'mensaje':f'Bienvenido {usuario}'})
+            else:
+                return render (request, 'Appjugadores/inicio.html', {'mensaje': 'Datos sincorrectos'})
+        else:
+            return render (request, 'Appjugadores/inicio.html', {'mensaje': 'Error, formulario inválido'})
+
+    else:
+        form= AuthenticationForm()
+        return render (request, 'Appjugadores/login.html',{'form':form})
+
+def register_request(request):
+    if request.method =='POST':
+        form = UserRegisterForm (request.POST)
+        if form.is_valid():
+            username= form.cleaned_data['username']
+            form.save() 
+            return render (request, 'Appjugadores/inicio.html', {'mensaje':f'Usuario {username} creado :)'})
+        else:
+               return render (request, 'Appjugadores/inicio.html', {'mensaje':'Error no se pudo crear al usuario'})
+               
+    else:
+        form= UserRegisterForm()
+        return render (request, 'Appjugadores/registro.html',{'form':form})
+
+@login_required
+def editarPerfil(request):
+    usuario= request.user
+
+    if request.method =='POST':
+        formulario= UserEditForm(request.POST, instance= usuario)
+        if formulario.is_valid():
+            informacion =formulario.cleaned_data
+            usuario.email= informacion['email']
+            usuario.password1= informacion['password1']
+            usuario.password2= informacion['password2']
+            usuario.save()
+            return render(request, 'Appjugadores/inicio.html', { 'mensaje': 'Datos editados con exito'})
+
+    else:
+        formulario= UserEditForm(instance=usuario)
+
+        return render(request, "Appjugadores/editarPerfil.html", {"formulario":formulario, "usuario": usuario.username})
+
+
+
+
 
 
 

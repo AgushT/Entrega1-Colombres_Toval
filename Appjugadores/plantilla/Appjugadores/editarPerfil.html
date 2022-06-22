@@ -1,0 +1,11 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+<h3>Modificar el perfil de {{ usuario }}</h3>
+<form action="{% url 'editarPerfil' %}" method="POST"> {% csrf_token %}
+    <table>
+    {{formulario.as_table}}
+    </table>
+    <input type="submit" value="Guardar">
+></form>
+{% endblock %}
