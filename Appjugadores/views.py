@@ -248,7 +248,8 @@ def editarPerfil(request):
 
         return render(request, "Appjugadores/editarPerfil.html", {"formulario":formulario, "usuario": usuario.username})
 
-
+def creadores(request):
+    return render(request, "Appjugadores/creadores.html")
 
 
 

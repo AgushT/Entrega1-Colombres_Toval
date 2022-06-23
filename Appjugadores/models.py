@@ -22,3 +22,5 @@ class Antecedentes(models.Model):
     club_debutante= models.CharField(max_length=30)
     club_actual= models.CharField(max_length=30)
 
+
+

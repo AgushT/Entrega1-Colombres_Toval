@@ -23,7 +23,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="/static/appjugadores/assets/img/pelota.png"/></a>
+                <a class="navbar-brand" href="/Appjugadores/inicio"><img src="/static/appjugadores/assets/img/pelota.png"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'Jugadores' %}">Jugadores</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Estadisticas' %}">Estadisticas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Antecedentes' %}">Antecedentes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Creadores' %}">Creadores</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,18 +49,15 @@
             <a class="btn btn-primary btn-xl text-uppercase" id="meet-players" href="/Appjugadores/jugadores">Conoce los Jugadores</a>
         </header>
        
-<<<<<<< HEAD
-        {%  block contenidoQueCambia %}
-        <h1>{{mensaje}}</h1>
-        {% endblock %}
-=======
         <div class="changing-container">
             {%  block contenidoQueCambia %}
-            
+
+            <h1>{{mensaje}}</h1>
+        
+
             {% endblock %}
 
         </div>
->>>>>>> d2b04799fa9d1518f92b38623146eec149106610
        
 
         <!-- Footer-->
