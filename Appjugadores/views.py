@@ -207,7 +207,7 @@ def login_request(request):
                 login(request, user)  
                 return render (request, 'Appjugadores/inicio.html', {'mensaje':f'Bienvenido {usuario}'})
             else:
-                return render (request, 'Appjugadores/inicio.html', {'mensaje': 'Datos sincorrectos'})
+                return render (request, 'Appjugadores/inicio.html', {'mensaje': 'Datos incorrectos'})
         else:
             return render (request, 'Appjugadores/inicio.html', {'mensaje': 'Error, formulario inválido'})
 
