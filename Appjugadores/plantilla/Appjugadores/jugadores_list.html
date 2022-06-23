@@ -1,0 +1,25 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>JUGADORES</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h1> Sección de Jugadores</h1>
+{% for jugador in object_list %}
+<li>{{jugador}}</li>
+<button>
+    <a href="{% url 'jugadores_detalle' jugador.id %}">Detalle</a>
+</button>
+<button>
+    <a href="{% url 'jugador_editar' jugador.id %}">Editar</a>
+</button>
+<button>
+    <a href="{% url 'jugador_borrar' jugador.id %}">Borrar</a>
+</button>
+{% endfor %}
+<br>
+<br>
+<button>
+    <a href="{% url 'jugador_crear' %}">Crear</a>
+</button>
+{% endblock %}

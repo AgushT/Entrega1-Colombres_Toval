@@ -1,0 +1,12 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Jugadores</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h3>Sección de Jugadores</h3>
+<form method="POST">{% csrf_token %}
+    <p>Estas seguro de Eliminar al Jugador "{{object}}"</p>
+    <input type="submit" value="SI">
+</form>
+{% endblock %}

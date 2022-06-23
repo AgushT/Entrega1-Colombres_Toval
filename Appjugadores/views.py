@@ -6,8 +6,9 @@ from Appjugadores.forms import JugadoresFormulario, AntecedentesFormulario, Esta
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def inicio(self):
@@ -194,6 +195,29 @@ def editarAntecedente(request, año_de_debut):
          miFormulario= AntecedentesFormulario(initial={'año_de_debut':antecedente.año_de_debut, 'club_debutante': antecedente.club_debutante,'club_actual': antecedente.club_actual})
          contexto= {'miFormulario': miFormulario, 'año_de_debut': año_de_debut}
     return render (request, 'Appjugadores/editarAntecedentes.html', contexto)
+
+class Jugadoreslist(LoginRequiredMixin,ListView):
+     model= Jugadores
+     template_name= 'Appjugadores/jugadores_list.html'
+
+class jugadoresDetalles (DetailView):
+     model= Jugadores
+     template_name= 'Appjugadores/jugadores_detalle.html'
+
+class jugadorCreacion(CreateView):
+     model= Jugadores
+     success_url = reverse_lazy('jugadores_listar')
+     fields= ('nombre_completo', 'fechadenacimiento', 'peso', 'altura', 'nacionalidad')
+
+class jugadorEdicion(UpdateView):
+     model= Jugadores
+     success_url = reverse_lazy('jugadores_listar')
+     fields= ('nombre_completo', 'fechadenacimiento', 'peso', 'altura', 'nacionalidad')
+
+class jugadorEliminacion(DeleteView):
+     model= Jugadores
+     success_url = reverse_lazy('jugadores_listar')
+
 
 def login_request(request):
     if request.method=='POST':

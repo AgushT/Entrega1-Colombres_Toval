@@ -1,0 +1,17 @@
+{% extends "Appjugadores/inicio.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Jugadores</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h3>Sección de Jugadores</h3>
+<p> NOMBRE COMPLETO: <i>{{jugador.nombre_completo}}</i></p>
+<p> FECHA DE NACIMIENTO: <i>{{jugador.fechadenacimiento}}</i></p>
+<p> PESO: <i>{{jugador.peso}}</i></p>
+<p> ALTURA: <i>{{jugador.altura}}</i></p>
+<p> NACIONALIDAD: <i>{{jugador.nacionalidad}}</i></p>
+
+<p> 
+    <a href="{% url 'jugadores_listar' %}">Volver a la lista de jugadores</a>
+</p>
+{% endblock %}
