@@ -9,9 +9,10 @@
 {% for antecedente in antecedentes %}
 <li>{{ antecedente }}</li>
 <button>
-    <a href= "{% url 'eliminarantecedente' antecedente.año_de_debut %}">Eliminar</a>
+    <a href= "{% url 'eliminarantecedente' antecedente.año_de_debut %}">Eliminar</a>  
+</button>
+<button>
     <a href= "{% url 'editarantecedente' antecedente.año_de_debut %}">Editar</a>
-    
 </button>
 {% endfor %}
 {% endblock %}

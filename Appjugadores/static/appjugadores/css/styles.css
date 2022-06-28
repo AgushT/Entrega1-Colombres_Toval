@@ -230,6 +230,15 @@ ul ol {
   padding: 30px;
 }
 
+.card-img{
+  width: 300px;
+}
+
+
+.card-creadores{
+  max-width: 400px;
+}
+
 dt {
   font-weight: 700;
 }

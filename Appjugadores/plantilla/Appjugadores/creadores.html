@@ -1,15 +1,16 @@
 {% extends "Appjugadores/inicio.html" %}
 {% load static %}
 {% block contenidoQueCambia %}
-<div class="card" style="width: 18rem;">
-    <img src="https://c.tenor.com/yhUkQ85oxDsAAAAC/cachorro-brasil.gif" class="card-img-top" alt="...">
+<div class="d-flex justify-content-center flex-column flex-md-row">
+  <div class="card mx-md-5 card-creadores">
+    <img src="{%  static 'Appjugadores/assets/img/yo.jpeg' %}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Agustin Toval</h5>
       <p class="card-text">Tengo 18 años y me apasionan las nuevas tecnologias. En mi tiempo libre estudio y juego videojuegos.</p>
       <a href="https://www.linkedin.com/in/agustin-fernando-toval-417434243/" class="btn btn-primary">Contacto</a>
     </div>
   </div>
-  <div class="card" style="width: 18rem;">
+  <div class="card mx-md-5 card-creadores">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Agustin Colombres</h5>
@@ -17,5 +18,6 @@
       <a href="https://www.linkedin.com/in/agustin-colombres-354151102/" class="btn btn-primary">Contacto</a>
     </div>
   </div>
+</div>
 
 {% endblock %}

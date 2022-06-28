@@ -35,7 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'jugadores_listar' %}">Jugadores</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Estadisticas' %}">Estadisticas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Antecedentes' %}">Antecedentes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Creadores' %}">Creadores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Creadores' %}">Acerca de mí</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +53,8 @@
             {%  block contenidoQueCambia %}
 
             <h1>{{mensaje}}</h1>
-        
+            <a href="" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Register</a>
+            <a href="" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Login</a>
 
             {% endblock %}
 
