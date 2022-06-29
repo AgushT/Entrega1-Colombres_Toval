@@ -51,8 +51,11 @@
        
         <div class="changing-container">
             {%  block contenidoQueCambia %}
+            <div>
+                <h1>{{mensaje}}</h1>
+            </div>
 
-            <h1>{{mensaje}}</h1>
+            
             <a href="{% url 'registro' %}" class="btn btn-primary btn-lg active" role="button" aria-disabled="true">Register</a>
             <a href="{% url 'login' %}" class="btn btn-secondary btn-lg active" role="button" aria-disabled="true">Login</a>
 
