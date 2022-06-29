@@ -6,8 +6,18 @@
 {% block contenidoQueCambia %}
 <h1>Estos son  Nuestros Jugadores</h1>
 <h3>Lista de jugadores</h3>
-{% for jugador in object_list %}
+{% for jugador in jugadores %}
 <li>{{ jugador }}</li>
-
+<button>
+    <a href= "{% url 'eliminarjugador' jugador.nombre_completo %}">Eliminar</a>
+</button>   
+<button>
+    <a href= "{% url 'editarjugador' jugador.nombre_completo %}">Editar</a>
+</button>
+<br>
+<br>
+<button>
+    <a href="{% url 'JugadoresFormulario' %}">Crear</a>
+</button>
 {% endfor %}
 {% endblock %}

@@ -196,27 +196,27 @@ def editarAntecedente(request, año_de_debut):
          contexto= {'miFormulario': miFormulario, 'año_de_debut': año_de_debut}
     return render (request, 'Appjugadores/editarAntecedentes.html', contexto)
 
-class Jugadoreslist(LoginRequiredMixin,ListView):
-     model= Jugadores
-     template_name= 'Appjugadores/jugadores_list.html'
+#class Jugadoreslist(LoginRequiredMixin,ListView):
+     #model= Jugadores
+     #template_name= 'Appjugadores/jugadores_list.html'
 
-class jugadoresDetalles (DetailView):
-     model= Jugadores
-     template_name= 'Appjugadores/jugadores_detalle.html'
+#class jugadoresDetalles (DetailView):
+     #model= Jugadores
+    #template_name= 'Appjugadores/jugadores_detalle.html'
 
-class jugadorCreacion(CreateView):
-     model= Jugadores
-     success_url = reverse_lazy('jugadores_listar')
-     fields= ('nombre_completo', 'fechadenacimiento', 'peso', 'altura', 'nacionalidad')
+#class jugadorCreacion(CreateView):
+     #model= Jugadores
+     #success_url = reverse_lazy('jugadores_listar')
+     #fields= ('nombre_completo', 'fechadenacimiento', 'peso', 'altura', 'nacionalidad')
 
-class jugadorEdicion(UpdateView):
-     model= Jugadores
-     success_url = reverse_lazy('jugadores_listar')
-     fields= ('nombre_completo', 'fechadenacimiento', 'peso', 'altura', 'nacionalidad')
+#class jugadorEdicion(UpdateView):
+     #model= Jugadores
+     #success_url = reverse_lazy('jugadores_listar')
+     #fields= ('nombre_completo', 'fechadenacimiento', 'peso', 'altura', 'nacionalidad')
 
-class jugadorEliminacion(DeleteView):
-     model= Jugadores
-     success_url = reverse_lazy('jugadores_listar')
+#class jugadorEliminacion(DeleteView):
+     #model= Jugadores
+     #success_url = reverse_lazy('jugadores_listar')
 
 
 def login_request(request):
