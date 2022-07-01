@@ -6,9 +6,9 @@ class Jugadores(models.Model):
     peso=  models.IntegerField()
     altura= models.IntegerField()
     nacionalidad= models.CharField(max_length=30)
-
-def __str__(self) -> str: 
-    return self.nombre_completo
+    def __str__(self): 
+        return self.nombre_completo+ " / "+ self.nacionalidad
+    
 
 
 class Estadisticas(models.Model): 
@@ -16,6 +16,8 @@ class Estadisticas(models.Model):
     velocidad= models.IntegerField()
     posicion= models.CharField(max_length=30)
     precisiondepase= models.IntegerField()
+    
+    
 
 class Antecedentes(models.Model):
     año_de_debut= models.DateField() 
