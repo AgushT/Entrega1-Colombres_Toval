@@ -14,10 +14,11 @@
 <button>
     <a href= "{% url 'editarantecedente' antecedente.año_de_debut %}">Editar</a>
 </button>
+
+{% endfor %}
 <br>
 <br>
 <button>
     <a href="{% url 'AntecedentesFormulario' %}">Crear</a>
 </button>
-{% endfor %}
 {% endblock %}

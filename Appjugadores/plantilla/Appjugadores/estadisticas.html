@@ -14,10 +14,11 @@
 <button>
     <a href= "{% url 'editarestadistica' estadistica.goles %}">Editar</a>
 </button>
+
+{% endfor %}
 <br>
 <br>
 <button>
     <a href="{% url 'EstadisticasFormulario' %}">Crear</a>
 </button>
-{% endfor %}
 {% endblock %}

@@ -23,6 +23,7 @@ class AntecedentesFormulario(forms.Form):
     club_actual= forms.CharField(max_length=30)
 
 class UserRegisterForm (UserCreationForm):
+    age = forms.IntegerField(label="Edad")
     email= forms.EmailField(required=True)
     password1= forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2= forms.CharField(label='Repetir la Contraseña', widget=forms.PasswordInput)
@@ -33,8 +34,7 @@ class Meta:
     help_texts= {k:"" for k in fields}
 
 class UserEditForm (UserCreationForm):
-    last_name= forms.CharField(label='Modificar el Apellido')
-    first_name= forms.CharField(label='Modificar el Nombre')
+    age = forms.IntegerField(label="Edad")
     email= forms.EmailField(required=True)
     password1= forms.CharField(label='Modificar Contraseña', widget=forms.PasswordInput)
     password2= forms.CharField(label='Repetir la Contraseña', widget=forms.PasswordInput)
