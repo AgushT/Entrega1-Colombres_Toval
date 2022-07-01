@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from Appjugadores.models import Jugadores, Estadisticas, Antecedentes
@@ -43,7 +43,7 @@ def jugadoresFormulario(request):
             #nacionalidad= informacion ['nacionalidad']
             jugador= Jugadores(nombre_completo= informacion['nombre_completo'], fechadenacimiento= informacion['fechadenacimiento'], peso= informacion['peso'], altura=informacion['altura'], nacionalidad= informacion['nacionalidad'])
             jugador.save()
-            return render (request, 'Appjugadores/inicio.html')
+            return redirect ("/jugadores")
     else:
          miFormulario= JugadoresFormulario()
     return render (request, 'Appjugadores/jugadoresFormulario.html', {'miFormulario': miFormulario})

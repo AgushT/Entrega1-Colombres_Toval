@@ -4,21 +4,27 @@
 <h3>Jugadores</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<h1>Estos son  Nuestros Jugadores</h1>
-<h3>Lista de jugadores</h3>
-{% for jugador in jugadores %}
-<li>{{ jugador }}</li>
-<button>
-    <a href= "{% url 'eliminarjugador' jugador.nombre_completo %}">Eliminar</a>
-</button>   
-<button>
-    <a href= "{% url 'editarjugador' jugador.nombre_completo %}">Editar</a>
+<h1>Jugadores</h1>
+<button class="d-inline border-0 mb-5">
+    <a href="{% url 'JugadoresFormulario' %}" class="btn btn-primary">Crear nuevo juagdor</a>
 </button>
-
-{% endfor %}
-<br>
-<br>
-<button>
-    <a href="{% url 'JugadoresFormulario' %}">Crear</a>
-</button>
+<div class="row w-75 m-auto align-items-center justify-content-center">
+    {% for jugador in jugadores %}
+    <div class="col-12 col-md-6 col-xxl-4 border border-secondary rounded text-center">
+        <h3>{{ jugador.nombre_completo }}</h3>
+        <p>Fecha de nacimiento: {{ jugador.fechadenacimiento }}</p>
+        <p>Peso: {{ jugador.peso }}kg</p>
+        <p>Altura: {{ jugador.altura }}cm</p>
+        <p>Nacionalidad: {{ jugador.nacionalidad }}</p>
+        <div class="mb-3">
+            <button class="border-0">
+                <a href="{% url 'editarjugador' jugador.nombre_completo %}" class="btn btn-warning">Editar</a>
+            </button>
+            <button class="border-0">
+                <a href="{% url 'eliminarjugador' jugador.nombre_completo %}" class="btn btn-danger">Eliminar</a>
+            </button>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
