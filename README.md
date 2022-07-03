@@ -1,4 +1,4 @@
-# Entrega intermedia CoderHouse
+# ProyectoDepor
 #### Integrantes: Agustin Colombres, Agustin Toval
 #### Bienvenidos a Appjugadores
 
