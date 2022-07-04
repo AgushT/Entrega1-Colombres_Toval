@@ -37,7 +37,20 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'Estadisticas' %}">Estadisticas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Antecedentes' %}">Antecedentes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Creadores' %}">Sobre nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'editarPerfil' %}">Perfil</a></li> 
+                        <!--<li class="nav-item"><a class="nav-link" href="{% url 'editarPerfil' %}">Perfil</a></li> -->
+                        
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Register</a></li>
+                        {% endif %}
+
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a>
+                        {% endif %}
+
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'editarPerfil' %}">{{user.username}}</a>
+                        {% endif %}
+                        
                     </ul>
                 </div>
             </div>
@@ -56,10 +69,6 @@
             <div>
                 <h1>{{mensaje}}</h1>
             </div>
-
-            
-            <a href="{% url 'registro' %}" class="btn btn-primary btn-lg active" role="button" aria-disabled="true">Register</a>
-            <a href="{% url 'login' %}" class="btn btn-secondary btn-lg active" role="button" aria-disabled="true">Login</a>
 
             {% endblock %}
 

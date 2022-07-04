@@ -6,12 +6,15 @@
     <table>
     {{formulario.as_table}}
     </table>
-    <input type="submit" value="Guardar">
+    <input type="submit" value="Guardar"
 ></form>
 <body>
-    <button>
-        <a href= "{% url 'Logout' %}">Logout</a>
-    </button>
+    <div class="mb-3">
+        <br>
+        <button class="border-0">
+            <a href="{% url 'Logout' %}" class="btn btn-warning">Logout</a>
+        </button>
+    </div>
 </body>
 
 {% endblock %}
