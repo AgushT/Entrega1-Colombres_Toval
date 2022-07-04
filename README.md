@@ -1,28 +1,17 @@
-# ProyectoDepor
-#### Integrantes: Agustin Colombres, Agustin Toval
-#### Bienvenidos a Appjugadores
+# AppJugadores
 
-## Links
-_[Inicio](http://127.0.0.1:8000/Appjugadores/inicio)_
+_Este proyecto se basa en una pagina que lleva un registro de jugadores estrella con sus caracteristicas tecnicas y su historial deportivo._
 
-_[Busqueda nombre](http://127.0.0.1:8000/Appjugadores/busquedanombre)_
+## Autores ✒️
+* **Agustin Colombres** (https://github.com/AgustinColombres)
 
+* **Agustin Toval** (https://github.com/AgustinToval)
 
-# **CONTENIDO**
-# *[ProjectDepor]*
+Se han realizado cambios por parte de ambos inetegrantes mediante transmicion via meet, en donde **Agustin Colombres** en un principio dedico mas tiempo en la parte BackEnd mientras que **Agustin Toval** por otro lado, al FrontEnd. Cabe mencionar que mayormente el proyecto fue trabajado conjuntamente via Meet donde se equilibro el aporte de los dos.
 
-# Content [ProjectDepor](ProyectoDepor/)
+## Expresiones de Gratitud 🎁
 
-# *[Appjugadores]*
+* Muchas gracias al Profesor Octavio y los tutores por su dedicacion y tiempo aportado para nuestro desarrollo profesional. 
 
- Models [Modelos](Appjugadores/models.py)
- Forms [Formularios](Appjugadores/forms.py)
- Path [Urls](Appjugadores/urls.py)
- Views [Funciones](Appjugadores/views.py)
- Templates [Plantillas](Appjugadores/plantilla/Appjugadores/)
- Static [Static](Appjugadores/static/appjugadores/)
-
- *Formulario para cargar jugadores: http://127.0.0.1:8000/Appjugadores/ jugadoresFormulario"*
- *Formulario para cargar estadisticas: http://127.0.0.1:8000/Appjugadores/ estadisticasFormulario"*
- *Formulario para cargar antecedentes: http://127.0.0.1:8000/Appjugadores/ antecedentesFormulario"*
- *Busqueda de datos del jugador por el nombre: http://127.0.0.1:8000/Appjugadores/ busquedanombre"*
+---
+😊
