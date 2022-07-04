@@ -19,7 +19,7 @@ class JugadoresFormulario (forms.Form):
         ("Español", "Español")
     )
 
-    nombre_completo= forms.CharField(max_length= 50, widget=forms.TextInput({ "placeholder": "Agustín Toval"}))
+    nombre_completo= forms.CharField(max_length= 50, widget=forms.TextInput({ "placeholder": "Matias Gutierrez"}))
     fechadenacimiento= forms.DateField(widget=forms.TextInput({ "placeholder": "YYYY-MM-DD"}), label="Fecha de nacimiento") 
     peso=  forms.IntegerField(widget=forms.TextInput({ "placeholder": "50"}))
     altura= forms.IntegerField(widget=forms.TextInput({ "placeholder": "180"}), label="Altura (cm)")
@@ -27,10 +27,10 @@ class JugadoresFormulario (forms.Form):
 
 
 def obtenerJugadoresEnTupla():
-    todasLasEstadisticas = Estadisticas.objects.all()
+    #todasLasEstadisticas = Estadisticas.objects.all()
     todosLosJugadores = Jugadores.objects.all()
     # filter todas los jugadores to return only those that doesn't have estadisticas
-    todosLosJugadores = todosLosJugadores.exclude(nombre_completo__in=todasLasEstadisticas.values_list('jugador', flat=True))
+    #todosLosJugadores = todosLosJugadores.exclude(nombre_completo__in=todasLasEstadisticas.values_list('jugador', flat=True))
     jugadoresEnTupla = [(jugador.nombre_completo, jugador.nombre_completo) for jugador in todosLosJugadores]
     return jugadoresEnTupla
 class EstadisticasFormulario(forms.Form): 
@@ -59,9 +59,17 @@ class EstadisticasFormulario(forms.Form):
     precisiondepase= forms.IntegerField(min_value=0, max_value=10, label="Precisión de pase", widget=forms.TextInput({ "placeholder": "1-10"}))
 
 class AntecedentesFormulario(forms.Form):
-    año_de_debut= forms.DateField() 
-    club_debutante= forms.CharField(max_length=30)
-    club_actual= forms.CharField(max_length=30)
+    def __init__(self, *args, **kwargs):
+        if not kwargs or not kwargs['initial']['jugador']:
+            super(AntecedentesFormulario, self).__init__(*args, **kwargs)
+            self.fields['jugador'] = forms.ChoiceField(
+                choices=obtenerJugadoresEnTupla() )
+        else:
+            super(AntecedentesFormulario, self).__init__(*args, **kwargs)
+
+    año_de_debut= forms.DateField(widget=forms.TextInput({ "placeholder": "YYYY-MM-DD"}), label="Año de debut") 
+    club_debutante= forms.CharField(max_length=50, widget=forms.TextInput({ "placeholder": "Racing"}))
+    club_actual= forms.CharField(max_length=50, widget=forms.TextInput({ "placeholder": "Real Madrid"}))
 
 class UserRegisterForm (UserCreationForm):
     age = forms.IntegerField(label="Edad")

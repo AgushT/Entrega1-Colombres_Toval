@@ -65,12 +65,13 @@ def estadisticasFormulario(request):
 def antecedentesFormulario(request):    
     if request.method== 'POST':
         miFormulario= AntecedentesFormulario(request.POST)
+        print(miFormulario)
         if miFormulario.is_valid():
             informacion= miFormulario.cleaned_data
         #año_de_debut= informacion ['año_de_debut']
         #club_debutante= informacion['club_debutante']
         #club_actual= informacion['club_actual']
-            antecedentes= Antecedentes(año_de_debut= informacion ['año_de_debut'], club_debutante= informacion ['club_debutante'], club_actual= informacion['club_actual'])
+            antecedentes= Antecedentes(jugador= informacion['jugador'], año_de_debut= informacion ['año_de_debut'], club_debutante= informacion ['club_debutante'], club_actual= informacion['club_actual'])
             antecedentes.save()
             return render (request, 'Appjugadores/inicio.html')
     else:
@@ -165,31 +166,31 @@ def leerAntecedentes(request):
   return render(request, 'Appjugadores/antecedentes.html', contexto)
 
 @login_required
-def eliminarantecedente(request, año_de_debut ):
-     antecedente= Antecedentes.objects.get(año_de_debut= año_de_debut )
+def eliminarantecedente(request, id ):
+     antecedente= Antecedentes.objects.get(id=id )
      antecedente.delete()
-     antecedentes= Antecedentes.objects.all()
-     contexto= {'antecedentes': antecedentes}
-     return render(request, "Appjugadores/antecedentes.html", contexto)
+     messages.success(request, "Antecedente eliminado")
+     return redirect("/antecedentes")
 
-def editarAntecedente(request, año_de_debut):  
-    antecedente= Antecedentes.objects.get(año_de_debut= año_de_debut )
+def editarAntecedente(request, id):  
+    antecedente= Antecedentes.objects.get(id=id)
 
     if request.method== 'POST':
         miFormulario= AntecedentesFormulario(request.POST)
         print(miFormulario)
         if miFormulario.is_valid:
             informacion= miFormulario.cleaned_data
+            antecedente.jugador= informacion ['jugador']
             antecedente.año_de_debut= informacion ['año_de_debut']
             antecedente.club_debutante= informacion['club_debutante']
             antecedente.club_actual= informacion['club_actual']
             antecedente.save()
             antecedentes= Antecedentes.objects.all()
-            contexto= {'antecedentes': antecedentes}
-            return render (request, 'Appjugadores/inicio.html', contexto)
+            contexto= {'antecedentes': antecedentes} 
+            return redirect('/antecendentes')
     else:
-         miFormulario= AntecedentesFormulario(initial={'año_de_debut':antecedente.año_de_debut, 'club_debutante': antecedente.club_debutante,'club_actual': antecedente.club_actual})
-         contexto= {'miFormulario': miFormulario, 'año_de_debut': año_de_debut}
+         miFormulario= AntecedentesFormulario(initial={ 'jugador':antecedente.jugador  ,'año_de_debut':antecedente.año_de_debut, 'club_debutante': antecedente.club_debutante,'club_actual': antecedente.club_actual})
+         contexto= {'miFormulario': miFormulario, 'id' : id, 'jugador' : antecedente.jugador}
     return render (request, 'Appjugadores/editarAntecedentes.html', contexto)
 
 #class Jugadoreslist(LoginRequiredMixin,ListView):

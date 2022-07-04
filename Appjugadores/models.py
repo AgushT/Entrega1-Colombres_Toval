@@ -10,7 +10,6 @@ class Jugadores(models.Model):
         return self.nombre_completo+ " / "+ self.nacionalidad
     
 
-
 class Estadisticas(models.Model): 
     jugador= models.CharField(max_length=50, default="")
     goles=  models.IntegerField()
@@ -19,6 +18,7 @@ class Estadisticas(models.Model):
     precisiondepase= models.IntegerField()
     
 class Antecedentes(models.Model):
+    jugador= models.CharField(max_length=50, default="")
     año_de_debut= models.DateField() 
     club_debutante= models.CharField(max_length=30)
     club_actual= models.CharField(max_length=30)

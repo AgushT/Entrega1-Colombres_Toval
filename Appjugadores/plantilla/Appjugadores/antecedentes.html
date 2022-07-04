@@ -1,24 +1,29 @@
 {% extends "Appjugadores/inicio.html" %}
 {% load static %}
 {% block section_name %}
-<h3>Estadisticas</h3>
+<h3>Antecedentes</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<h1>Estos son los Antecedentes de  Nuestros Jugadores</h1>
-<h3>Lista de jugadores</h3>
-{% for antecedente in antecedentes %}
-<li>{{ antecedente }}</li>
-<button>
-    <a href= "{% url 'eliminarantecedente' antecedente.año_de_debut %}">Eliminar</a>  
+<h1>Antecedentes</h1>
+<button class="d-inline border-0 mb-5">
+    <a href="{% url 'AntecedentesFormulario' %}" class="btn btn-primary">Crear antecedentes</a>
 </button>
-<button>
-    <a href= "{% url 'editarantecedente' antecedente.año_de_debut %}">Editar</a>
-</button>
-
-{% endfor %}
-<br>
-<br>
-<button>
-    <a href="{% url 'AntecedentesFormulario' %}">Crear</a>
-</button>
+<div class="row w-75 m-auto align-items-center justify-content-center">
+    {% for antecedente in antecedentes %}
+    <div class="col-12 col-md-6 col-xxl-4 border border-secondary rounded text-center">
+        <h3>{{ antecedente.jugador }}</h3>
+        <p>Año de debut: {{ antecedente.año_de_debut }}</p>
+        <p>Club debutante: {{ antecedente.club_debutante }}</p>
+        <p>Club actual: {{ antecedente.club_actual }}</p>
+        <div class="mb-3">
+            <button class="border-0">
+                <a href="{% url 'editarantecedente' antecedente.id %}" class="btn btn-warning">Editar</a>
+            </button>
+            <button class="border-0">
+                <a href="{% url 'eliminarantecedente' antecedente.id %}" class="btn btn-danger">Eliminar</a>
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
