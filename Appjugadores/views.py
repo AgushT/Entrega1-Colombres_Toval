@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from Appjugadores.models import Jugadores, Estadisticas, Antecedentes
 from Appjugadores.forms import JugadoresFormulario, AntecedentesFormulario, EstadisticasFormulario, UserRegisterForm, UserEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -54,13 +55,9 @@ def estadisticasFormulario(request):
         print(miFormulario)
         if miFormulario.is_valid:
             informacion= miFormulario.cleaned_data
-        #goles= informacion ['goles']  
-        #velocidad= informacion ['velocidad']
-        #posicion= informacion ['posicion']
-        #precisiondepase= informacion ['precisiondepase']
-            estadistica= Estadisticas(goles= informacion['goles'], velocidad=informacion['velocidad'], posicion= informacion['posicion'], precisiondepase= informacion['precisiondepase'])
+            estadistica= Estadisticas(jugador=informacion['jugador'], goles= informacion['goles'], velocidad=informacion['velocidad'], posicion= informacion['posicion'], precisiondepase= informacion['precisiondepase'])
             estadistica.save()
-            return render (request, 'Appjugadores/inicio.html')
+            return redirect('/estadisticas')
     else:
          miFormulario= EstadisticasFormulario()
     return render (request, 'Appjugadores/estadisticasFormulario.html', {'miFormulario': miFormulario})
@@ -130,20 +127,19 @@ def editarJugador(request, nombre_completo):
     return render (request, 'Appjugadores/editarJugador.html', contexto)
 
 def leerEstadisticas(request):
-  estadisticas= Estadisticas.objects.all() 
+  estadisticas = Estadisticas.objects.all()
   contexto = {'estadisticas': estadisticas}
   return render(request, 'Appjugadores/estadisticas.html', contexto)
 
 @login_required
-def eliminarestadistica(request, goles ):
-     estadistica= Estadisticas.objects.get(goles= goles )
+def eliminarestadistica(request, id ):
+     estadistica= Estadisticas.objects.get(id=id )
      estadistica.delete()
-     estadisticas= Estadisticas.objects.all()
-     contexto= {'estadisticas': estadisticas}
-     return render(request, "Appjugadores/estadisticas.html", contexto)
+     messages.success(request, "Estadistica eliminada")
+     return redirect("/estadisticas")
 
-def editarEstadistica(request, goles):  
-    estadistica= Estadisticas.objects.get(goles= goles )
+def editarEstadistica(request, id):  
+    estadistica= Estadisticas.objects.get(id= id )
 
     if request.method== 'POST':
         miFormulario= EstadisticasFormulario(request.POST)
@@ -157,11 +153,11 @@ def editarEstadistica(request, goles):
             estadistica.save()
             estadisticas= Estadisticas.objects.all()
             contexto= {'estadisticas': estadisticas}
-            return render (request, 'Appjugadores/inicio.html', contexto)
+            return redirect('/estadisticas')
     else:
-         miFormulario= EstadisticasFormulario(initial={'goles':estadistica.goles, 'velocidad':estadistica.velocidad,'posicion': estadistica.posicion,'precisiondepase': estadistica.precisiondepase})
-         contexto= {'miFormulario': miFormulario, 'goles': goles}
-    return render (request, 'Appjugadores/editarEstadistica.html', contexto)
+         miFormulario= EstadisticasFormulario(initial={'jugador': estadistica.jugador, 'goles':estadistica.goles, 'velocidad':estadistica.velocidad,'posicion': estadistica.posicion,'precisiondepase': estadistica.precisiondepase})
+         contexto= {'miFormulario': miFormulario, 'id': id, 'jugador': estadistica.jugador}
+         return render (request, 'Appjugadores/editarEstadistica.html', contexto)
 
 def leerAntecedentes(request):
   antecedentes= Antecedentes.objects.all() 

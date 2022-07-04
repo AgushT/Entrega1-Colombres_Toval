@@ -4,21 +4,27 @@
 <h3>Estadisticas</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<h1>Estos son las Estadisticas de  Nuestros Jugadores</h1>
-<h3>Lista de jugadores</h3>
-{% for estadistica in estadisticas %}
-<li>{{ estadistica }}</li>
-<button>
-    <a href= "{% url 'eliminarestadistica' estadistica.goles %}">Eliminar</a>
+<h1>Estadisticas</h1>
+<button class="d-inline border-0 mb-5">
+    <a href="{% url 'EstadisticasFormulario' %}" class="btn btn-primary">Crear estadisticas</a>
 </button>
-<button>
-    <a href= "{% url 'editarestadistica' estadistica.goles %}">Editar</a>
-</button>
-
-{% endfor %}
-<br>
-<br>
-<button>
-    <a href="{% url 'EstadisticasFormulario' %}">Crear</a>
-</button>
+<div class="row w-75 m-auto align-items-center justify-content-center">
+    {% for estadistica in estadisticas %}
+    <div class="col-12 col-md-6 col-xxl-4 border border-secondary rounded text-center">
+        <h3>{{ estadistica.jugador }}</h3>
+        <p>Goles: {{ estadistica.goles }}</p>
+        <p>Velocidad: {{ estadistica.velocidad }}</p>
+        <p>Posicion: {{ estadistica.posicion }}</p>
+        <p>Precisión de pase: {{ estadistica.precisiondepase }}</p>
+        <div class="mb-3">
+            <button class="border-0">
+                <a href="{% url 'editarestadistica' estadistica.id %}" class="btn btn-warning">Editar</a>
+            </button>
+            <button class="border-0">
+                <a href="{% url 'eliminarestadistica' estadistica.id %}" class="btn btn-danger">Eliminar</a>
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

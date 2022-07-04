@@ -1,20 +1,24 @@
 from django import forms
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth.models import User
+from Appjugadores.models import Jugadores, Estadisticas, Antecedentes
 
-todasLasNacionalidades = (
-    ("Argentino", "Argentino"),
-    ("Brasileño", "Brasileño"),
-    ("Chileno", "Chileno"),
-    ("Colombiano", "Colombiano"),
-    ("Costarricense", "Costarricense"),
-    ("Cubano", "Cubano"),
-    ("Dominicano", "Dominicano"),
-    ("Ecuatoriano", "Ecuatoriano"),
-    ("Haitiano", "Haitiano"),
-    ("Español", "Español")
-)
+
 class JugadoresFormulario (forms.Form):
+
+    todasLasNacionalidades = (
+        ("Argentino", "Argentino"),
+        ("Brasileño", "Brasileño"),
+        ("Chileno", "Chileno"),
+        ("Colombiano", "Colombiano"),
+        ("Costarricense", "Costarricense"),
+        ("Cubano", "Cubano"),
+        ("Dominicano", "Dominicano"),
+        ("Ecuatoriano", "Ecuatoriano"),
+        ("Haitiano", "Haitiano"),
+        ("Español", "Español")
+    )
+
     nombre_completo= forms.CharField(max_length= 50, widget=forms.TextInput({ "placeholder": "Agustín Toval"}))
     fechadenacimiento= forms.DateField(widget=forms.TextInput({ "placeholder": "YYYY-MM-DD"}), label="Fecha de nacimiento") 
     peso=  forms.IntegerField(widget=forms.TextInput({ "placeholder": "50"}))
@@ -22,11 +26,37 @@ class JugadoresFormulario (forms.Form):
     nacionalidad= forms.ChoiceField(choices=todasLasNacionalidades)
 
 
+def obtenerJugadoresEnTupla():
+    todasLasEstadisticas = Estadisticas.objects.all()
+    todosLosJugadores = Jugadores.objects.all()
+    # filter todas los jugadores to return only those that doesn't have estadisticas
+    todosLosJugadores = todosLosJugadores.exclude(nombre_completo__in=todasLasEstadisticas.values_list('jugador', flat=True))
+    jugadoresEnTupla = [(jugador.nombre_completo, jugador.nombre_completo) for jugador in todosLosJugadores]
+    return jugadoresEnTupla
 class EstadisticasFormulario(forms.Form): 
-    goles=  forms.IntegerField()
-    velocidad= forms.IntegerField()
-    posicion= forms.CharField(max_length=30)
-    precisiondepase= forms.IntegerField()
+    # En kwargs se envian los argumentos para la función. 
+    # Cuando creamos una estadistica, mostramos los jugadores sin estadisticas para que se eliga al mismo
+    # Cuando editamos, no queremos que se añadan las opciones con los distintos jugadores
+    def __init__(self, *args, **kwargs):
+        if not kwargs or not kwargs['initial']['jugador']:
+            super(EstadisticasFormulario, self).__init__(*args, **kwargs)
+            self.fields['jugador'] = forms.ChoiceField(
+                choices=obtenerJugadoresEnTupla() )
+        else:
+            super(EstadisticasFormulario, self).__init__(*args, **kwargs)
+            
+
+    todasLasPosiciones = (
+        ("Arquero", "Arquero"),
+        ("Defensor", "Defensor"),
+        ("Mediocampista", "Mediocampista"),
+        ("Delantero", "Delantero"),
+    )
+
+    goles=  forms.IntegerField(widget=forms.TextInput({ "placeholder": "30"}))
+    velocidad= forms.IntegerField(min_value=0, max_value=10, widget=forms.TextInput({ "placeholder": "1-10"}))
+    posicion= forms.ChoiceField(choices=todasLasPosiciones)
+    precisiondepase= forms.IntegerField(min_value=0, max_value=10, label="Precisión de pase", widget=forms.TextInput({ "placeholder": "1-10"}))
 
 class AntecedentesFormulario(forms.Form):
     año_de_debut= forms.DateField() 
