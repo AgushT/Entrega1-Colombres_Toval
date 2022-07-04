@@ -1,4 +1,4 @@
-# AppJugadores
+# AppJugadores⚽
 
 _Este proyecto se basa en una pagina que lleva un registro de jugadores estrella con sus caracteristicas tecnicas y su historial deportivo._
 
