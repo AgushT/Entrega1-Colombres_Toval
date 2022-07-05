@@ -2,6 +2,9 @@
 
 _Este proyecto se basa en una pagina que lleva un registro de jugadores estrella con sus caracteristicas tecnicas y su historial deportivo._
 
+## AppJugadores
+(https://drive.google.com/drive/folders/10J2fXjGv-dkIGiS77DXS3QAPnEzkMcAU?usp=sharing)
+
 ## Autores ✒️
 * **Agustin Colombres** (https://github.com/AgustinColombres)
 
